@@ -9,7 +9,7 @@ import pandas as pd
 
 app = FastAPI()
 
-# 📘 Models
+
 class Borrower(BaseModel):
     name: str
     age: Optional[int]
@@ -36,7 +36,7 @@ class BorrowedRecord(BaseModel):
     borrow_days: int
     borrow_time: datetime
 
-# 📚 Book Inventory
+
 books = {
     "spiritual": [
         BookData(title="Autobiograpy of Yogi", author="Paramahansa Yogananda", copies=3, max_borrow_days=7),
@@ -54,7 +54,7 @@ books = {
 
 borrowed_data: List[BorrowedRecord] = []
 
-# 📂 Endpoints
+
 
 @app.get("/categories")
 def get_categories():
@@ -171,5 +171,6 @@ def borrowed_table_html():
     df = pd.DataFrame(rows)
     html_table = df.to_html(index=False, border=1)
     return f"<html><body><h2>Borrowed Book Records</h2>{html_table}</body></html>"
+
 
 
